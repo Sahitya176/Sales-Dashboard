@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sales Analytics Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f7fa;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .kpi {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 40px;
+    }
+    .kpi div {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      flex: 1;
+      margin: 0 10px;
+    }
+    canvas {
+      max-width: 800px;
+      margin: 40px auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📊 Sales Analytics Dashboard</h1>
+
+  <div class="kpi">
+    <div>
+      <h3>Total Sales</h3>
+      <p>₹1,41,890.00</p>
+    </div>
+    <div>
+      <h3>Total Orders</h3>
+      <p>10</p>
+    </div>
+    <div>
+      <h3>Top Customer</h3>
+      <p>Amit Verma</p>
+    </div>
+  </div>
+
+  <canvas id="monthlySalesChart"></canvas>
+  <canvas id="topProductsChart"></canvas>
+
+  <script>
+    // Monthly Sales Chart
+    const monthlyCtx = document.getElementById('monthlySalesChart').getContext('2d');
+    new Chart(monthlyCtx, {
+      type: 'line',
+      data: {
+        labels: ['2022-Nov', '2023-Jan', '2023-May', '2023-Jul', '2023-Sep', '2024-Jan', '2024-Mar', '2024-Apr', '2024-May', '2024-Jun'],
+        datasets: [{
+          label: 'Monthly Sales (₹)',
+          data: [55080, 25000, 2400, 600, 1600, 1500, 1200, 2500, 250, 54500],
+          borderColor: 'blue',
+          backgroundColor: 'lightblue',
+          fill: true,
+          tension: 0.3
+        }]
+      }
+    });
+
+    // Top Products Chart
+    const productCtx = document.getElementById('topProductsChart').getContext('2d');
+    new Chart(productCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Pen Set', 'Coffee Mug', 'Water Bottle', 'Chair', 'Desk Lamp'],
+        datasets: [{
+          label: 'Revenue (₹)',
+          data: [250, 1200, 600, 2400, 1600],
+          backgroundColor: ['#36a2eb', '#4bc0c0', '#ffcd56', '#ff6384', '#9966ff']
+        }]
+      }
+    });
+  </script>
+
+</body>
+</html>
